@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+
 import "./App.css";
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
     setCountryDetails(event.target.value);
   };
   return (
-    <div className="App">
-      <select onChange={handleOnChange}>
+    <div className="countries-wrapper">
+      <select onChange={handleOnChange} className="countries-sellect">
         {countries.map((item) => (
           <option key={item.name} value={item.name}>
             {item.name}
@@ -33,20 +34,21 @@ function App() {
         .map((item) => (
           <div>
             <h1>{item.name}</h1>
-            <h2>{item.capital}</h2>
-            <p>{item.population}</p>
             <img src={item.flag} alt="flag" width="100" />
+            <h2>{item.capital}</h2>
+            <p>Population:{item.population}</p>
+            <p>Calling code:{item.callingCodes}</p>
             {item.languages.map((language) => (
               <div key={language.name}>
-                <p>{language.name}</p>
-                <p>{language.nativeName}</p>
+                <p>Language name:{language.name}</p>
+                <p>Language native name:{language.nativeName}</p>
               </div>
             ))}
             {item.currencies.map((curency) => (
               <div key={curency.name}>
-                <p>{curency.name}</p>
-                <p>{curency.code}</p>
-                <p>{curency.symbol}</p>
+                <p>Curency name:{curency.name}</p>
+                <p>Curency code:{curency.code}</p>
+                <p>Curency symbol:{curency.symbol}</p>
               </div>
             ))}
           </div>
